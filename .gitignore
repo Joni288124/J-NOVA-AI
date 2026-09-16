@@ -1,1 +1,19 @@
 
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de editor
+.vscode/
+.idea/
+
+# Archivos temporales
+*.log
+*.tmp
+
+# Node
+node_modules/
+
+# Build
+dist/
+build/
