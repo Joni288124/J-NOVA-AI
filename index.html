@@ -2,21 +2,27 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>J-NOVA — Generador de Páginas Web</title>
+    <title>J‑NOVA IA — Panel</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>J-NOVA — Generador de Páginas Web</h1>
+    <aside class="sidebar">
+        <h2>J‑NOVA IA</h2>
 
-        <textarea id="description" placeholder="Describe el tipo de web que quieres generar..."></textarea>
+        <button data-tool="generator">Generador Web</button>
+        <button data-tool="ideas">Ideas de Negocio</button>
+        <button data-tool="problems">Resolver Problemas</button>
+        <button data-tool="planner">Planificador</button>
+        <button data-tool="study">Asistente de Estudio</button>
+    </aside>
 
-        <button id="generateBtn">Generar Página</button>
-
-        <h2>Código HTML generado:</h2>
-        <pre id="resultHtml"></pre>
-    </div>
+    <main id="mainContent">
+        <div class="welcome">
+            <h1>Bienvenido a J‑NOVA IA</h1>
+            <p>Selecciona una herramienta en el panel lateral.</p>
+        </div>
+    </main>
 
     <script src="app.js"></script>
 </body>
