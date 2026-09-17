@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Plan Business — J‑NOVA AI</title>
+  <title>Panel IA — J‑NOVA</title>
 
   <!-- ESTILO JONI FUSIONADO -->
   <style>
@@ -11,21 +11,34 @@
       font-family: "Segoe UI", system-ui, sans-serif;
       background: #050712;
       color: #f5f7ff;
+      display: flex;
     }
 
-    /* HERO */
-    .business-hero {
-      padding: 80px 40px;
-      background: linear-gradient(180deg, #0a0f25, #050712);
-      text-align: center;
+    /* SIDEBAR */
+    .sidebar {
+      width: 240px;
+      background: #070915;
+      border-right: 1px solid #20263d;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
     }
-    .business-inner {
-      max-width: 800px;
-      margin: 0 auto;
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
     }
+
     .logo-circle {
-      width: 50px;
-      height: 50px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background: #4a7bff;
       display: flex;
@@ -33,216 +46,225 @@
       justify-content: center;
       font-weight: 700;
       color: #050712;
-      margin: 0 auto;
       box-shadow: 0 0 25px rgba(74, 123, 255, 0.6);
-      font-size: 22px;
-    }
-    .business-hero h1 {
-      font-size: 42px;
-      margin-top: 20px;
-    }
-    .business-hero .subtitle {
-      opacity: 0.85;
-      max-width: 600px;
-      margin: 10px auto 0;
     }
 
-    /* SECCIONES */
-    .section {
-      padding: 60px 40px;
-    }
-    .section h2 {
-      max-width: 900px;
-      margin: 0 auto 25px;
-      font-size: 26px;
-    }
-
-    /* GRID */
-    .business-grid {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    }
-
-    /* TARJETAS */
-    .business-card {
-      background: #0b0f1f;
-      border-radius: 16px;
-      padding: 20px;
-      border: 1px solid #20263d;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
-
-      /* Animación inicial */
-      opacity: 0;
-      transform: translateY(20px);
-      transition: 0.6s ease;
-    }
-    .business-card.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .business-card.big {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    /* BOTÓN */
-    .btn-primary {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 22px;
-      background: #4a7bff;
-      color: #050712;
+    .logo-text {
       font-weight: 600;
-      border-radius: 999px;
-      text-decoration: none;
-      box-shadow: 0 0 18px rgba(74, 123, 255, 0.5);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .sidebar button {
+      background: #0b0f1f;
+      border: 1px solid #20263d;
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: #f5f7ff;
+      text-align: left;
+      cursor: pointer;
+      font-size: 14px;
       transition: 0.2s;
     }
 
-    .btn-primary:hover {
+    .sidebar button:hover {
+      border-color: #4a7bff;
+      box-shadow: 0 0 15px rgba(74, 123, 255, 0.4);
+    }
+
+    /* BLOQUEADAS */
+    .locked {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .locked:hover {
+      border-color: #ff4a4a;
+      box-shadow: 0 0 15px rgba(255, 74, 74, 0.4);
+    }
+
+    /* MAIN */
+    .main {
+      margin-left: 240px;
+      padding: 40px;
+      width: calc(100% - 240px);
+    }
+
+    textarea {
+      width: 100%;
+      height: 140px;
+      background: #0b0f1f;
+      border: 1px solid #20263d;
+      border-radius: 12px;
+      padding: 12px;
+      color: #f5f7ff;
+      font-size: 14px;
+    }
+
+    .action {
+      margin-top: 15px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      background: #4a7bff;
+      color: #050712;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .action:hover {
       background: #365fd6;
       box-shadow: 0 0 25px rgba(74, 123, 255, 0.6);
       transform: scale(1.05);
     }
 
-    /* FOOTER */
-    .footer {
-      padding: 25px 40px;
-      border-top: 1px solid #20263d;
-      text-align: center;
+    pre {
+      margin-top: 20px;
+      background: #0b0f1f;
+      border-radius: 12px;
+      border: 1px solid #20263d;
+      padding: 14px;
+      white-space: pre-wrap;
       font-size: 13px;
-      opacity: 0.7;
+    }
+
+    /* MENSAJE BLOQUEO */
+    .block-message {
+      background: #0b0f1f;
+      border: 1px solid #ff4a4a;
+      padding: 20px;
+      border-radius: 12px;
+      color: #ff4a4a;
+      box-shadow: 0 0 20px rgba(255, 74, 74, 0.3);
     }
   </style>
 </head>
 
 <body class="joni">
 
-  <!-- HERO -->
-  <header class="business-hero">
-    <div class="business-inner">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
       <div class="logo-circle">J</div>
-      <h1>Plan Business</h1>
-      <p class="subtitle">
-        El plan más completo de J‑NOVA AI.  
-        Herramientas avanzadas, diseño premium y acceso total al panel IA.
-      </p>
+      <span class="logo-text">Panel J‑NOVA</span>
     </div>
-  </header>
 
-  <!-- SECCIÓN 1 -->
-  <section class="section">
-    <h2>¿Qué incluye el plan Business?</h2>
+    <!-- GRATIS -->
+    <button data-tool="generator" data-plan="free">Generador Web</button>
+    <button data-tool="ideas" data-plan="free">Ideas de negocio</button>
+    <button data-tool="problems" data-plan="free">Resolver problemas</button>
+    <button data-tool="planner" data-plan="free">Planificador</button>
+    <button data-tool="study" data-plan="free">Asistente de estudio</button>
+    <button data-tool="text" data-plan="free">Generador de textos</button>
 
-    <div class="business-grid">
+    <hr>
 
-      <div class="business-card">
-        <h3>Acceso completo al panel IA</h3>
-        <p>Usa todas las herramientas sin límites, con un entorno oscuro elegante estilo Joni.</p>
-      </div>
+    <!-- PREMIUM -->
+    <button class="locked" data-tool="premium1" data-plan="business">Plantillas premium 🔒</button>
+    <button class="locked" data-tool="premium2" data-plan="business">Generador avanzado 🔒</button>
+    <button class="locked" data-tool="premium3" data-plan="business">Exportación de código 🔒</button>
+    <button class="locked" data-tool="premium4" data-plan="business">Branding personalizado 🔒</button>
+  </aside>
 
-      <div class="business-card">
-        <h3>Generador de páginas web</h3>
-        <p>Crea webs completas con estructura, estilo y contenido listo para copiar.</p>
-      </div>
-
-      <div class="business-card">
-        <h3>Plantillas premium</h3>
-        <p>Diseños modernos listos para exportar y personalizar.</p>
-      </div>
-
-      <div class="business-card">
-        <h3>Herramientas para negocios</h3>
-        <p>Ideas de negocio, análisis, planificación y textos profesionales.</p>
-      </div>
-
-      <div class="business-card">
-        <h3>Documentación integrada</h3>
-        <p>Guías de uso y ejemplos para que puedas aprender rápido.</p>
-      </div>
-
-      <div class="business-card">
-        <h3>Estilo Joni</h3>
-        <p>Diseño único con azul eléctrico, sombras suaves y un toque personal.</p>
-      </div>
-
+  <!-- MAIN -->
+  <main id="mainContent" class="main">
+    <div class="welcome">
+      <h1>Bienvenido al panel J‑NOVA</h1>
+      <p>Selecciona una herramienta en el panel lateral.</p>
     </div>
-  </section>
-
-  <!-- SECCIÓN 2 -->
-  <section class="section">
-    <h2>¿Por qué elegir Business?</h2>
-    <div class="business-card big">
-      <p>
-        El plan Business está pensado para usuarios que quieren una plataforma seria,
-        moderna y con estilo propio. No es un “premium” genérico: es tu propio sistema
-        de IA con tu identidad visual.
-      </p>
-      <p>
-        Todo el panel, las herramientas y las plantillas están optimizados para que
-        puedas crear contenido profesional sin complicarte.
-      </p>
-      <a href="dashboard.html" class="btn-primary">Entrar al panel Business</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>J‑NOVA Business AI — Estilo Joni, diseño premium y herramientas avanzadas.</p>
-  </footer>
+  </main>
 
   <!-- JAVASCRIPT FUSIONADO -->
   <script>
-    // Animación de aparición suave
-    const cards = document.querySelectorAll(".business-card");
+    const USER_PLAN = "free"; // Cambia a "business" para desbloquear todo
 
-    const revealOnScroll = () => {
-      const triggerPoint = window.innerHeight * 0.85;
+    const mainContent = document.getElementById("mainContent");
+    const buttons = document.querySelectorAll(".sidebar button");
 
-      cards.forEach(card => {
-        const cardTop = card.getBoundingClientRect().top;
+    function loadGenerator() {
+      mainContent.innerHTML = `
+        <h1>Generador de páginas web</h1>
+        <textarea id="desc" placeholder="Describe la web que quieres generar..."></textarea>
+        <button class="action" id="generateBtn">Generar</button>
+        <pre id="resultHtml"></pre>
+      `;
 
-        if (cardTop < triggerPoint) {
-          card.classList.add("show");
+      document.getElementById("generateBtn").onclick = () => {
+        const desc = document.getElementById("desc").value.trim();
+        document.getElementById("resultHtml").textContent =
+          desc ? \`<!DOCTYPE html>
+<html>
+<head><title>\${desc}</title></head>
+<body><h1>\${desc}</h1><p>Contenido generado por J‑NOVA.</p></body>
+</html>\` : "Escribe una descripción.";
+      };
+    }
+
+    function loadSimpleTool(title, placeholder, templateText) {
+      mainContent.innerHTML = `
+        <h1>${title}</h1>
+        <textarea id="input" placeholder="${placeholder}"></textarea>
+        <button class="action" id="runBtn">Generar</button>
+        <pre id="result"></pre>
+      `;
+
+      document.getElementById("runBtn").onclick = () => {
+        const value = document.getElementById("input").value.trim();
+        document.getElementById("result").textContent =
+          templateText.replace("{{value}}", value || "tu idea");
+      };
+    }
+
+    function loadPremiumBlocked() {
+      mainContent.innerHTML = `
+        <div class="block-message">
+          <h2>🔒 Función exclusiva del Plan Business</h2>
+          <p>Actualiza al plan Business para desbloquear esta herramienta.</p>
+        </div>
+      `;
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const tool = btn.dataset.tool;
+        const plan = btn.dataset.plan;
+
+        if (plan === "business" && USER_PLAN === "free") {
+          loadPremiumBlocked();
+          return;
         }
-      });
-    };
 
-    window.addEventListener("scroll", revealOnScroll);
-    window.addEventListener("load", revealOnScroll);
-
-    // Hover dinámico estilo Joni
-    cards.forEach(card => {
-      card.addEventListener("mouseenter", () => {
-        card.style.borderColor = "#4a7bff";
-        card.style.boxShadow = "0 0 25px rgba(74, 123, 255, 0.45)";
-        card.style.transform = "translateY(-4px)";
-      });
-
-      card.addEventListener("mouseleave", () => {
-        card.style.borderColor = "#20263d";
-        card.style.boxShadow = "0 0 25px rgba(0, 0, 0, 0.35)";
-        card.style.transform = "translateY(0)";
+        if (tool === "generator") loadGenerator();
+        if (tool === "ideas") loadSimpleTool(
+          "Ideas de negocio",
+          "¿Qué tipo de negocio buscas?",
+          "Ideas relacionadas con: {{value}}\n\n- Servicio digital\n- Producto escalable\n- Modelo de suscripción\n- Plataforma automatizada"
+        );
+        if (tool === "problems") loadSimpleTool(
+          "Resolver problemas",
+          "Describe tu problema...",
+          "Solución sugerida para: {{value}}\n\n1. Analiza la causa.\n2. Divide el problema.\n3. Aplica soluciones por partes.\n4. Evalúa el resultado."
+        );
+        if (tool === "planner") loadSimpleTool(
+          "Planificador",
+          "¿Qué quieres planificar?",
+          "Plan creado para: {{value}}\n\n- Objetivo\n- Pasos\n- Recursos\n- Tiempo estimado"
+        );
+        if (tool === "study") loadSimpleTool(
+          "Asistente de estudio",
+          "Tema que quieres estudiar...",
+          "Resumen del tema: {{value}}\n\n- Concepto principal\n- Puntos clave\n- Ejemplos\n- Conclusión"
+        );
+        if (tool === "text") loadSimpleTool(
+          "Generador de textos",
+          "¿Qué texto necesitas?",
+          "Texto generado sobre: {{value}}\n\nEste es un borrador que puedes adaptar a tu estilo."
+        );
       });
     });
-
-    // Animación del título
-    const title = document.querySelector(".business-hero h1");
-
-    if (title) {
-      title.style.opacity = "0";
-      title.style.transform = "translateY(20px)";
-
-      setTimeout(() => {
-        title.style.transition = "0.8s ease";
-        title.style.opacity = "1";
-        title.style.transform = "translateY(0)";
-      }, 200);
-    }
   </script>
 
 </body>
