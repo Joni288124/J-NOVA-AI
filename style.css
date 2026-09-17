@@ -190,3 +190,45 @@ body.joni {
   white-space: pre-wrap;
   font-size: 13px;
 }
+/* Business Plan */
+.business-hero {
+  padding: 80px 40px;
+  background: linear-gradient(180deg, #0a0f25, #050712);
+  text-align: center;
+}
+.business-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.business-hero h1 {
+  font-size: 42px;
+  margin-top: 20px;
+}
+.business-hero .subtitle {
+  opacity: 0.85;
+  max-width: 600px;
+  margin: 10px auto 0;
+}
+
+.business-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.business-card {
+  background: #0b0f1f;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #20263d;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+}
+.business-card.big {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.business-card h3 {
+  margin-top: 0;
+}
