@@ -2,80 +2,270 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>J‑NOVA Business AI</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Panel IA — J‑NOVA</title>
+
+  <!-- ESTILO JONI FUSIONADO -->
+  <style>
+    body.joni {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: #050712;
+      color: #f5f7ff;
+      display: flex;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 240px;
+      background: #070915;
+      border-right: 1px solid #20263d;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .logo-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #4a7bff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #050712;
+      box-shadow: 0 0 25px rgba(74, 123, 255, 0.6);
+    }
+
+    .logo-text {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .sidebar button {
+      background: #0b0f1f;
+      border: 1px solid #20263d;
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: #f5f7ff;
+      text-align: left;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .sidebar button:hover {
+      border-color: #4a7bff;
+      box-shadow: 0 0 15px rgba(74, 123, 255, 0.4);
+    }
+
+    /* BLOQUEADAS */
+    .locked {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .locked:hover {
+      border-color: #ff4a4a;
+      box-shadow: 0 0 15px rgba(255, 74, 74, 0.4);
+    }
+
+    /* MAIN */
+    .main {
+      margin-left: 240px;
+      padding: 40px;
+      width: calc(100% - 240px);
+    }
+
+    textarea {
+      width: 100%;
+      height: 140px;
+      background: #0b0f1f;
+      border: 1px solid #20263d;
+      border-radius: 12px;
+      padding: 12px;
+      color: #f5f7ff;
+      font-size: 14px;
+    }
+
+    .action {
+      margin-top: 15px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      background: #4a7bff;
+      color: #050712;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .action:hover {
+      background: #365fd6;
+      box-shadow: 0 0 25px rgba(74, 123, 255, 0.6);
+      transform: scale(1.05);
+    }
+
+    pre {
+      margin-top: 20px;
+      background: #0b0f1f;
+      border-radius: 12px;
+      border: 1px solid #20263d;
+      padding: 14px;
+      white-space: pre-wrap;
+      font-size: 13px;
+    }
+
+    /* MENSAJE BLOQUEO */
+    .block-message {
+      background: #0b0f1f;
+      border: 1px solid #ff4a4a;
+      padding: 20px;
+      border-radius: 12px;
+      color: #ff4a4a;
+      box-shadow: 0 0 20px rgba(255, 74, 74, 0.3);
+    }
+  </style>
 </head>
+
 <body class="joni">
 
-<header class="hero">
-  <div class="hero-inner">
-    <div class="hero-brand">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
       <div class="logo-circle">J</div>
-      <span class="logo-text">J‑NOVA Business AI</span>
+      <span class="logo-text">Panel J‑NOVA</span>
     </div>
-    <h1>IA con estilo Joni para negocios y creación web.</h1>
-    <p>
-      Crea páginas web, ideas de negocio y soluciones inteligentes desde un panel único,
-      con un diseño oscuro, elegante y profesional.
-    </p>
-    <div class="hero-actions">
-      <a href="dashboard.html" class="btn primary">Entrar al panel IA</a>
-      <a href="#business" class="btn ghost">Ver plan Business</a>
+
+    <!-- GRATIS -->
+    <button data-tool="generator" data-plan="free">Generador Web</button>
+    <button data-tool="ideas" data-plan="free">Ideas de negocio</button>
+    <button data-tool="problems" data-plan="free">Resolver problemas</button>
+    <button data-tool="planner" data-plan="free">Planificador</button>
+    <button data-tool="study" data-plan="free">Asistente de estudio</button>
+    <button data-tool="text" data-plan="free">Generador de textos</button>
+
+    <hr>
+
+    <!-- PREMIUM -->
+    <button class="locked" data-tool="premium1" data-plan="business">Plantillas premium 🔒</button>
+    <button class="locked" data-tool="premium2" data-plan="business">Generador avanzado 🔒</button>
+    <button class="locked" data-tool="premium3" data-plan="business">Exportación de código 🔒</button>
+    <button class="locked" data-tool="premium4" data-plan="business">Branding personalizado 🔒</button>
+  </aside>
+
+  <!-- MAIN -->
+  <main id="mainContent" class="main">
+    <div class="welcome">
+      <h1>Bienvenido al panel J‑NOVA</h1>
+      <p>Selecciona una herramienta en el panel lateral.</p>
     </div>
-  </div>
-</header>
+  </main>
 
-<section id="tools" class="section">
-  <h2>Herramientas J‑NOVA</h2>
-  <div class="grid">
-    <div class="card">Generador de páginas web</div>
-    <div class="card">Ideas de negocio</div>
-    <div class="card">Resolver problemas</div>
-    <div class="card">Planificador</div>
-    <div class="card">Asistente de estudio</div>
-    <div class="card">Generador de textos</div>
-  </div>
-</section>
+  <!-- JAVASCRIPT FUSIONADO -->
+  <script>
+    const USER_PLAN = "free"; // Cambia a "business" para desbloquear todo
 
-<section id="business" class="section">
-  <h2>Plan Business</h2>
-  <div class="card big">
-    <h3>J‑NOVA Business</h3>
-    <p>
-      Acceso completo al panel IA, plantillas avanzadas, generación de páginas web,
-      herramientas para negocios y documentación básica.
-    </p>
-    <ul>
-      <li>Panel IA con todas las herramientas.</li>
-      <li>Plantillas web modernas listas para copiar.</li>
-      <li>Diseño oscuro elegante con tu branding.</li>
-      <li>Textos generados que puedes adaptar.</li>
-    </ul>
-    <a href="dashboard.html" class="btn primary">Usar plan Business</a>
-  </div>
-</section>
+    const mainContent = document.getElementById("mainContent");
+    const buttons = document.querySelectorAll(".sidebar button");
 
-<section id="faq" class="section">
-  <h2>Preguntas frecuentes</h2>
-  <div class="card">
-    <h3>¿Qué es J‑NOVA Business AI?</h3>
-    <p>
-      Es una plataforma creada al estilo Joni para combinar IA y herramientas prácticas
-      en un entorno limpio, oscuro y profesional.
-    </p>
-  </div>
-  <div class="card">
-    <h3>¿Necesito saber programar?</h3>
-    <p>
-      No. Describe lo que quieres y las herramientas generan contenido y estructuras
-      que puedes usar o adaptar.
-    </p>
-  </div>
-</section>
+    function loadGenerator() {
+      mainContent.innerHTML = `
+        <h1>Generador de páginas web</h1>
+        <textarea id="desc" placeholder="Describe la web que quieres generar..."></textarea>
+        <button class="action" id="generateBtn">Generar</button>
+        <pre id="resultHtml"></pre>
+      `;
 
-<footer class="footer">
-  <p>J‑NOVA Business AI — Estilo Joni, IA para negocios y creación web.</p>
-</footer>
+      document.getElementById("generateBtn").onclick = () => {
+        const desc = document.getElementById("desc").value.trim();
+        document.getElementById("resultHtml").textContent =
+          desc ? \`<!DOCTYPE html>
+<html>
+<head><title>\${desc}</title></head>
+<body><h1>\${desc}</h1><p>Contenido generado por J‑NOVA.</p></body>
+</html>\` : "Escribe una descripción.";
+      };
+    }
+
+    function loadSimpleTool(title, placeholder, templateText) {
+      mainContent.innerHTML = `
+        <h1>${title}</h1>
+        <textarea id="input" placeholder="${placeholder}"></textarea>
+        <button class="action" id="runBtn">Generar</button>
+        <pre id="result"></pre>
+      `;
+
+      document.getElementById("runBtn").onclick = () => {
+        const value = document.getElementById("input").value.trim();
+        document.getElementById("result").textContent =
+          templateText.replace("{{value}}", value || "tu idea");
+      };
+    }
+
+    function loadPremiumBlocked() {
+      mainContent.innerHTML = `
+        <div class="block-message">
+          <h2>🔒 Función exclusiva del Plan Business</h2>
+          <p>Actualiza al plan Business para desbloquear esta herramienta.</p>
+        </div>
+      `;
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const tool = btn.dataset.tool;
+        const plan = btn.dataset.plan;
+
+        if (plan === "business" && USER_PLAN === "free") {
+          loadPremiumBlocked();
+          return;
+        }
+
+        if (tool === "generator") loadGenerator();
+        if (tool === "ideas") loadSimpleTool(
+          "Ideas de negocio",
+          "¿Qué tipo de negocio buscas?",
+          "Ideas relacionadas con: {{value}}\n\n- Servicio digital\n- Producto escalable\n- Modelo de suscripción\n- Plataforma automatizada"
+        );
+        if (tool === "problems") loadSimpleTool(
+          "Resolver problemas",
+          "Describe tu problema...",
+          "Solución sugerida para: {{value}}\n\n1. Analiza la causa.\n2. Divide el problema.\n3. Aplica soluciones por partes.\n4. Evalúa el resultado."
+        );
+        if (tool === "planner") loadSimpleTool(
+          "Planificador",
+          "¿Qué quieres planificar?",
+          "Plan creado para: {{value}}\n\n- Objetivo\n- Pasos\n- Recursos\n- Tiempo estimado"
+        );
+        if (tool === "study") loadSimpleTool(
+          "Asistente de estudio",
+          "Tema que quieres estudiar...",
+          "Resumen del tema: {{value}}\n\n- Concepto principal\n- Puntos clave\n- Ejemplos\n- Conclusión"
+        );
+        if (tool === "text") loadSimpleTool(
+          "Generador de textos",
+          "¿Qué texto necesitas?",
+          "Texto generado sobre: {{value}}\n\nEste es un borrador que puedes adaptar a tu estilo."
+        );
+      });
+    });
+  </script>
 
 </body>
 </html>
