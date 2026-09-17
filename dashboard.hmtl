@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel IA — J‑NOVA Business</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="joni">
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="logo-circle">J</div>
+    <span class="logo-text">Panel J‑NOVA</span>
+  </div>
+
+  <button data-tool="generator">Generador Web</button>
+  <button data-tool="ideas">Ideas de negocio</button>
+  <button data-tool="problems">Resolver problemas</button>
+  <button data-tool="planner">Planificador</button>
+  <button data-tool="study">Asistente de estudio</button>
+  <button data-tool="text">Generador de textos</button>
+</aside>
+
+<main id="mainContent" class="main">
+  <div class="welcome">
+    <h1>Bienvenido al panel J‑NOVA Business</h1>
+    <p>Elige una herramienta en el panel lateral para empezar.</p>
+  </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
